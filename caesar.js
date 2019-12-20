@@ -7,6 +7,7 @@ function cipherText(word, shift){
 	var encodedLetter = "";
 	var index = 0;
 	var encodedIndex = 0;
+	const maxAlphabet = 25;
 
 	// seperate each letter
 	var letterArray = word.split('');
@@ -25,7 +26,7 @@ function cipherText(word, shift){
 	
 		//edge case wrapping alaphabet
 		if (encodedIndex < 0 ){
-			encodedIndex = 25 - encodedIndex;
+			encodedIndex = maxAlphabet + encodedIndex;
 		}
 
 		// take the index and shift to get the new letter
