@@ -1,16 +1,17 @@
 // create a caesar cipher
 
-function cipherText(word, shift){
-	var alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-	var newText = "";
-	var letter = "";
-	var encodedLetter = "";
-	var index = 0;
-	var encodedIndex = 0;
+function cipherText(word, shiftCount){
+		const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 	const maxAlphabet = 25;
 
+	let encodedWord = ""; 	// String
+	let letter = ""; 		// String
+	let encodedLetter = ""; // String
+	let index = 0;			// Integer
+	let encodedIndex = 0;	// Integer
+
 	// seperate each letter
-	var letterArray = word.split('');
+	let letterArray = word.split('');
 	
 	// find the index of the letter in the alphabet
 	while (letterArray.length > 0){
@@ -22,7 +23,7 @@ function cipherText(word, shift){
 		index = alphabet.indexOf(letter);
 		
 		// apply the caesar shift to the index
-		encodedIndex = index - shift;
+		encodedIndex = index - shiftCount;
 	
 		//edge case wrapping alaphabet
 		if (encodedIndex < 0 ){
@@ -32,13 +33,13 @@ function cipherText(word, shift){
 		// take the index and shift to get the new letter
 		encodedLetter = alphabet[encodedIndex];
 
-		// add new letter to newText
-		newText = newText + encodedLetter;
+		// add new letter to encodedWord
+		encodedWord = encodedWord + encodedLetter;
 
 		// remove first letter of letterArray
 		letterArray.shift();
 	}
 
 	// return encoded word
-	return newText;
+	return encodedWord;
 }
