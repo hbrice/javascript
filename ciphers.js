@@ -1,15 +1,10 @@
-// create a caesar cipher
-
 "use strict";
-
-
 
 var Ciphers = function (){
 
 	/**
 	* Start public functions
 	**/
-
 
 	/**
 	* @alias module:ciphers~ciphers/caesarCipher
@@ -50,7 +45,7 @@ var Ciphers = function (){
 
 			//check for large shiftCounts
 			if(shiftCount > maxAlphabet){
-				shiftCount = shiftCount % maxAlphabet;
+				shiftCount = shiftCount % 26;
 			}else if(shiftCount < 0){
 				throw new Error('shiftCount is not allowed to be negative');
 			}

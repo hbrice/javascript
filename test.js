@@ -52,7 +52,7 @@ describe('Caesar Cipher Tests', function(){
 	})
 
 	it('should return a value for caesarCipher - large shiftCount', () => {
-		assert.equal(ciphers.caesarCipher('hello', 85, false), 'rovvy');
+		assert.equal(ciphers.caesarCipher('hello', 85, false), 'olssv');
 	})
 
 
@@ -62,6 +62,10 @@ describe('Caesar Cipher Tests', function(){
 
 	it('should throw an error for caesarCipher - no word', () => {
 		expect(function(){	ciphers.caesarCipher(1,true);	}).to.throw();
+	})
+
+	it('should throw an error for caesarCipher - negative shiftCount', () => {
+		expect(function(){	ciphers.caesarCipher('hello',-1,true);	}).to.throw();
 	})
 
 });
