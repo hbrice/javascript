@@ -85,7 +85,7 @@ var Ciphers = function (){
 	* Atbash Cipher takes in a substitue cipher with a specific key where the letters of the alphabet are reversed
 	* 
 	* @alias module:ciphers~ciphers/caesarCipher
-	* @param 
+	* @param {word: String} Takes in a string
 	* @returns {encodedWord: String} Returns the new endocded word
 	*/
 	var atbashCipher = function(word){
@@ -96,6 +96,8 @@ var Ciphers = function (){
 		// check user input
 		if(word == 'undefined'){
 			throw new Error('word to encrypt is empty');
+		}else if(){
+			^[+\-0-9(). ]+$
 		}
 
 		// seperate each letter
@@ -114,8 +116,10 @@ var Ciphers = function (){
 		// remove the commas from the word
 		encodedWord = encodedWord.replace(/,/g, '');
 
+		// return encoded word
 		return encodedWord;
 	};
+
 
 	/**
 	* End public functions

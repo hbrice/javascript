@@ -84,4 +84,8 @@ describe('Atbash Cipher Tests', function(){
 	it('should throw an error for atbashCipher - no parameters', () => {
 		expect(function(){	ciphers.atbashCipher();	}).to.throw();
 	})
+
+	it('should return a value for atbashCipher', () => {
+		assert.equal(ciphers.atbashCipher('cipher'), 'xrksvi');
+	})
 });
