@@ -96,8 +96,6 @@ var Ciphers = function (){
 		// check user input
 		if(word == 'undefined'){
 			throw new Error('word to encrypt is empty');
-		}else if(){
-			^[+\-0-9(). ]+$
 		}
 
 		// seperate each letter
@@ -121,6 +119,12 @@ var Ciphers = function (){
 	};
 
 
+	var substituteCipher = function (){
+		const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+
+		return '';
+	};
+
 	/**
 	* End public functions
 	**/
@@ -136,7 +140,8 @@ var Ciphers = function (){
 	*/
 	return {
 		caesarCipher: caesarCipher,
-		atbashCipher: atbashCipher
+		atbashCipher: atbashCipher,
+		substituteCipher: substituteCipher
 	};
 };
 

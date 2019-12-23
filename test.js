@@ -89,3 +89,9 @@ describe('Atbash Cipher Tests', function(){
 		assert.equal(ciphers.atbashCipher('cipher'), 'xrksvi');
 	})
 });
+
+describe('Substitute Cipher Tests', function(){
+	it('should return a value for substituteCipher', () => {
+		assert.equal(ciphers.substituteCipher(), '');
+	})
+});
