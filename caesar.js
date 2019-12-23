@@ -1,14 +1,21 @@
 // create a caesar cipher
+"use strict";
 
+/**
+* @alias cipherText
+* @param {word : String, shiftCount : Number}
+* @returns {encodedWord: String} Returns the new endocded word
+*
+**/
 function cipherText(word, shiftCount){
 	const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 	const maxAlphabet = 25;
 
 	let encodedWord = ""; 	// String
-	let letter = ""; 		// String
+	let letter = ""; 	// String
 	let encodedLetter = ""; // String
-	let index = 0;			// Integer
-	let encodedIndex = 0;	// Integer
+	let index = 0;		// Number
+	let encodedIndex = 0;	// Number
 
 	// seperate each letter
 	let letterArray = word.split('');
