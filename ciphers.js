@@ -7,6 +7,8 @@ var Ciphers = function (){
 	**/
 
 	/**
+	* Caesar Cipher takes in a word and shifts all the letters a certain number of times to return an ecrpyted word.
+	* 
 	* @alias module:ciphers~ciphers/caesarCipher
 	* @param {word : String, shift : Number, shiftLeft, boolean}
 	* @returns {encodedWord: String} Returns the new endocded word
@@ -80,6 +82,42 @@ var Ciphers = function (){
 	};
 
 	/**
+	* Atbash Cipher takes in a substitue cipher with a specific key where the letters of the alphabet are reversed
+	* 
+	* @alias module:ciphers~ciphers/caesarCipher
+	* @param 
+	* @returns {encodedWord: String} Returns the new endocded word
+	*/
+	var atbashCipher = function(word){
+		const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+		var reverseAlphabet = alphabet.slice(0,26);
+		reverseAlphabet = reverseAlphabet.reverse();
+
+		// check user input
+		if(word == 'undefined'){
+			throw new Error('word to encrypt is empty');
+		}
+
+		// seperate each letter
+		let letterArray = word.split('');
+
+		// use the map function to find the index of each letter then find same index in reverseAlphabet
+		var encryptedArray = letterArray.map(function(currentLetter){
+			var letterIndex = alphabet.indexOf(currentLetter);
+			return reverseAlphabet[letterIndex];
+
+		});
+
+		// make array a string
+		var encodedWord = encryptedArray.join();
+
+		// remove the commas from the word
+		encodedWord = encodedWord.replace(/,/g, '');
+
+		return encodedWord;
+	};
+
+	/**
 	* End public functions
 	**/
 
@@ -93,7 +131,8 @@ var Ciphers = function (){
 	* End private functions
 	*/
 	return {
-		caesarCipher: caesarCipher
+		caesarCipher: caesarCipher,
+		atbashCipher: atbashCipher
 	};
 };
 

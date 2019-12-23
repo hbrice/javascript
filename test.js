@@ -55,7 +55,6 @@ describe('Caesar Cipher Tests', function(){
 		assert.equal(ciphers.caesarCipher('hello', 85, false), 'olssv');
 	})
 
-
 	it('should throw an error for caesarCipher - no parameters', () => {
 		expect(function(){	ciphers.caesarCipher();	}).to.throw();
 	})
@@ -67,5 +66,22 @@ describe('Caesar Cipher Tests', function(){
 	it('should throw an error for caesarCipher - negative shiftCount', () => {
 		expect(function(){	ciphers.caesarCipher('hello',-1,true);	}).to.throw();
 	})
+});
 
+describe('Atbash Cipher Tests', function(){
+	it('should return a value for atbashCipher', () => {
+		assert.equal(ciphers.atbashCipher('abc'), 'zyx');
+	})
+
+	it('should return a value for atbashCipher', () => {
+		assert.equal(ciphers.atbashCipher('zyx'), 'abc');
+	})
+
+	it('should return a value for atbashCipher', () => {
+		assert.equal(ciphers.atbashCipher('merrychristmas'), 'nviibxsirhgnzh');
+	})
+
+	it('should throw an error for atbashCipher - no parameters', () => {
+		expect(function(){	ciphers.atbashCipher();	}).to.throw();
+	})
 });
