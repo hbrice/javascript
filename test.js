@@ -1,6 +1,10 @@
 //unit tests for caesar cipher
 const assert = require('assert')
 
+it('should return true', () => {
+  assert.equal(true,true)
+})
+
 it('should return a value', () => {
 	assert.equeal(cipherText('lightsaber', 5, true), 'gdbconuvym');
 })
