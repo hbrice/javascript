@@ -13,7 +13,7 @@ var Ciphers = function (){
 
 	/**
 	* @alias module:ciphers~ciphers/caesarCipher
-	* @parameter {word : String, shift : Number, shiftLeft, boolean}
+	* @param {word : String, shift : Number, shiftLeft, boolean}
 	* @returns {encodedWord: String} Returns the new endocded word
 	*/
 	var caesarCipher = function(word, shiftCount, shiftLeft){
