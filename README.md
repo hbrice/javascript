@@ -1,3 +1,3 @@
 # javascript
 
-On the side hobbies in JS
+Working on side hobbies in JS
