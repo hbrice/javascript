@@ -1,0 +1,25 @@
+{
+  "name": "ciphers.js",
+  "version": "1.0.0",
+  "description": "A simple caesar cipher",
+  "main": "ciphers.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hbrice/javascript.git"
+  },
+  "author": "hbrice",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hbrice/javascript/issues"
+  },
+  "homepage": "https://github.com/hbrice/javascript#readme",
+  "devDependencies": {
+    "mocha": "^6.2.2"
+  },
+  "dependencies": {
+    "chai": "^4.2.0"
+  }
+}
