@@ -13,9 +13,9 @@ function cipherText(word, shiftCount, shiftLeft){
 	const maxAlphabet = 25;
 
 	let encodedWord = ""; 	// String
-	let letter = ""; 		// String
+	let letter = ""; 	// String
 	let encodedLetter = ""; // String
-	let index = 0;			// Number
+	let index = 0;		// Number
 	let encodedIndex = 0;	// Number
 
 	// seperate each letter
