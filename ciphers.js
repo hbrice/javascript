@@ -2,6 +2,9 @@
 
 var Ciphers = function (){
 
+	const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+ 
+
 	/**
 	* Start public functions
 	**/
@@ -14,8 +17,7 @@ var Ciphers = function (){
 	* @returns {encodedWord: String} Returns the new endocded word
 	*/
 	var caesarCipher = function(word, shiftCount, shiftLeft){
-		const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-		const maxAlphabet = 25;
+		const maxAlphabet = 25; // index starts at 0
 
 		let encodedWord = ""; 	// String
 		let letter = ""; 	// String
@@ -89,7 +91,6 @@ var Ciphers = function (){
 	* @returns {encodedWord: String} Returns the new endocded word
 	*/
 	var atbashCipher = function(word){
-		const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 		var reverseAlphabet = alphabet.slice(0,26);
 		reverseAlphabet = reverseAlphabet.reverse();
 
@@ -119,9 +120,64 @@ var Ciphers = function (){
 	};
 
 
-	var substituteCipher = function (){
-		const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+	var substituteCipher = function (word, key){
 
+		if(word!='' && key ==''){
+			var numberArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26];
+			var randomArray = shuffle(numberArray);
+			var encryptedArray = [];
+			var indexedArray = [];
+			var encryptedText = '';
+			var key = randomArray.map(function(current, index) {
+				
+				//map randomArray with alphabet
+				var letter = alphabet[index];
+				var letterIndex = current -1;
+				
+				var tempObject = {};
+				tempObject['letter'] = letter;
+				tempObject['index'] = letterIndex;
+
+				// letter = a, index = 0
+				return tempObject; // {alphabet[0] = a : 1}
+
+			});
+			//console.log('key ' + JSON.stringify(key));
+
+
+			// can be put into helper function
+			let letterArray = word.split('');
+			var indexArray = [];
+			// take the word passed in, split
+			for(let i=0; i<letterArray.length; i++){
+				var singleLetter = letterArray[i];
+				// look up each letter in the mapping.
+				indexArray = key.map(function(current, index){
+					if(current['letter'] == singleLetter){
+						var ei = alphabet[current['index']];
+						encryptedArray.push(ei);
+						return current['index'];
+					}
+				});
+			}
+			//end helper function
+			
+			encryptedText = encryptedArray.toString();
+//			console.log(encryptedText)
+			//go look up letter to indexarray
+
+
+
+			// word = 'apple'
+			// mappedArray
+			return encryptedText;
+
+		}else if(word!='' && key!=''){
+			//decrypt
+			return '';
+
+		}
+		// word was empty
 		return '';
 	};
 
@@ -134,6 +190,32 @@ var Ciphers = function (){
 	* Start private functions
 	**/
 	
+
+	/**
+	* Helper function for shuffling array. 
+	* 
+	* @alias module:ciphers~ciphers/shuffle
+	* @param {array: Array of Numbers} Takes in an array of numbers
+	* @returns {array: Array of Numbers} Returns the shuffled array
+	*/
+	function shuffle(array) {
+		var currentIndex = array.length, temporaryValue, randomIndex;
+
+		// While there remain elements to shuffle...
+		while (0 !== currentIndex) {
+
+			// Pick a remaining element...
+			randomIndex = Math.floor(Math.random() * currentIndex);
+			currentIndex -= 1;
+
+			// And swap it with the current element.
+			temporaryValue = array[currentIndex];
+			array[currentIndex] = array[randomIndex];
+			array[randomIndex] = temporaryValue;
+		}
+
+		return array;
+	}
 
 	/*
 	* End private functions

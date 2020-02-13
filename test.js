@@ -91,7 +91,15 @@ describe('Atbash Cipher Tests', function(){
 });
 
 describe('Substitute Cipher Tests', function(){
-	it('should return a value for substituteCipher', () => {
+	it('should return an empty value for substituteCipher', () => {
 		assert.equal(ciphers.substituteCipher(), '');
+	})
+
+	it('should return an encrypted value for substituteCipher', () => {
+		expect(ciphers.substituteCipher('apple', '')).to.not.be.null;	
+	})
+
+	it('should not be null for substituteCipher', () => {
+		expect(ciphers.substituteCipher('apple', '')).to.not.be.null;
 	})
 });
