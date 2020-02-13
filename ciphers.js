@@ -3,7 +3,7 @@
 var Ciphers = function (){
 
 	const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
- 	const numberArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26];
+ 	const numberArray = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25];
 
 
 	/**
@@ -122,32 +122,18 @@ var Ciphers = function (){
 
 
 	var substituteCipher = function (word, key){
+		var encryptedArray = [];
+		var indexedArray = [];
+		var encryptedText = '';
 
-		if(word!='' && key ==''){
-			var randomArray = shuffle(numberArray);
-			var encryptedArray = [];
-			var indexedArray = [];
-			var encryptedText = '';
-			var key = randomArray.map(function(current, index) {
-				
-				//map randomArray with alphabet
-				var letter = alphabet[index];
-				var letterIndex = current -1;
-				var tempObject = {};
-				tempObject['letter'] = letter;
-				tempObject['index'] = letterIndex;
-				return tempObject; // {alphabet[0] = a : 1}
-
-			});
-
+		if(word!=''){
+			if(key == ''){
+				var key = generateKey();
+			}
+			//decrypt
 			encryptedArray = switchLetters(word, key);
 			encryptedText = encryptedArray.toString();
 			return encryptedText;
-
-		}else if(word!='' && key!=''){
-			//decrypt
-			return '';
-
 		}
 		// word was empty
 		return '';
@@ -185,32 +171,59 @@ var Ciphers = function (){
 			array[currentIndex] = array[randomIndex];
 			array[randomIndex] = temporaryValue;
 		}
-
 		return array;
 	}
 
 	/**
 	* Helper function for substituting letters. 
 	* 
-	* @alias module:ciphers~ciphers/shuffle
+	* @alias module:ciphers~ciphers/switchLetters
 	* @param {array: Array of Numbers} Takes in an array of numbers
-	* @returns {array: Array of Numbers} Returns the shuffled array
+	* @returns {array: Array of Numbers} Returns the encrypted array of letters
 	*/
 	function switchLetters(word, key){
+		//console.log('encryptedWord= ' + word)
+		//console.log('key= ' +JSON.stringify(key))
 		let letterArray = word.split('');
-		var encryptedArray = [];
+		var alteredArray = [];
+	
 
 		// take the word passed in, split
 		for(let i=0; i<letterArray.length; i++){
 			var singleLetter = letterArray[i];
 			// look up each letter in the mapping.
-			encryptedArray = key.map(function(current, index){
-				if(current['letter'] == singleLetter){
-					return alphabet[current['index']];
+			alteredArray = key.map(function(obj, index){
+				//console.log('current' + JSON.stringify(current))
+				if(obj['letter'] == singleLetter){
+					
+					//TODO: i think i need to do something differnt when decrypting
+					return alphabet[obj['index']];
+			
 				}
 			});
 		}
-		return encryptedArray;
+		//console.log(alteredArray)
+		return alteredArray;
+	}
+
+	/**
+	* Helper function for generating a key. 
+	* 
+	* @alias module:ciphers~ciphers/generateKey
+	* @returns {Map: Array of Objects} Returns the mapped letter to index number [{letter: 'p', index:3}, etc.]
+	*/
+	function generateKey(){
+		var randomArray = shuffle(numberArray);
+		var key = randomArray.map(function(current, index) {
+			//map randomArray with alphabet
+			var letter = alphabet[index];
+			var letterIndex = current;
+			var tempObject = {};
+			tempObject['letter'] = letter;
+			tempObject['index'] = letterIndex;
+			return tempObject;
+		});
+		return key;
 	}
 
 	/*

@@ -92,7 +92,7 @@ describe('Atbash Cipher Tests', function(){
 
 describe('Substitute Cipher Tests', function(){
 	it('should return an empty value for substituteCipher', () => {
-		assert.equal(ciphers.substituteCipher(), '');
+		assert.equal(ciphers.substituteCipher('', ''), '');
 	})
 
 	it('should return an encrypted value for substituteCipher', () => {
@@ -106,4 +106,23 @@ describe('Substitute Cipher Tests', function(){
 	it('should not be null for substituteCipher', () => {
 		expect(ciphers.substituteCipher('expelliarmus', '')).to.not.be.null;
 	})
+
+	it('should return a value for substituteCipher', () => {
+		var key = [{ letter: 'a', index: 6 },{ letter: 'b', index: 24 },
+				  { letter: 'c', index: 18 },{ letter: 'd', index: 9 },
+				  { letter: 'e', index: 5 },{ letter: 'f', index: 16 },
+				  { letter: 'g', index: 4 },{ letter: 'h', index: 21 },
+				  { letter: 'i', index: 12 },{ letter: 'j', index: 20 },
+				  { letter: 'k', index: 19 },{ letter: 'l', index: 3 },
+				  { letter: 'm', index: 10 },{ letter: 'n', index: 14 },
+				  { letter: 'o', index: 15 },{ letter: 'p', index: 17 },
+				  { letter: 'q', index: 0 },{ letter: 'r', index: 7 },
+				  { letter: 's', index: 25 },{ letter: 't', index: 23 },
+				  { letter: 'u', index: 8 },{ letter: 'v', index: 11 },
+				  { letter: 'w', index: 2 },{ letter: 'x', index: 22 },
+				  { letter: 'y', index: 1 },{ letter: 'z', index: 13 }]
+		assert.equal(ciphers.substituteCipher('abc', key), '');
+	})
+
+	
 });
