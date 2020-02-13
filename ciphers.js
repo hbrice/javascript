@@ -3,7 +3,8 @@
 var Ciphers = function (){
 
 	const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
- 
+ 	const numberArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26];
+
 
 	/**
 	* Start public functions
@@ -123,7 +124,6 @@ var Ciphers = function (){
 	var substituteCipher = function (word, key){
 
 		if(word!='' && key ==''){
-			var numberArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26];
 			var randomArray = shuffle(numberArray);
 			var encryptedArray = [];
 			var indexedArray = [];
@@ -133,43 +133,15 @@ var Ciphers = function (){
 				//map randomArray with alphabet
 				var letter = alphabet[index];
 				var letterIndex = current -1;
-				
 				var tempObject = {};
 				tempObject['letter'] = letter;
 				tempObject['index'] = letterIndex;
-
-				// letter = a, index = 0
 				return tempObject; // {alphabet[0] = a : 1}
 
 			});
-			//console.log('key ' + JSON.stringify(key));
 
-
-			// can be put into helper function
-			let letterArray = word.split('');
-			var indexArray = [];
-			// take the word passed in, split
-			for(let i=0; i<letterArray.length; i++){
-				var singleLetter = letterArray[i];
-				// look up each letter in the mapping.
-				indexArray = key.map(function(current, index){
-					if(current['letter'] == singleLetter){
-						var ei = alphabet[current['index']];
-						encryptedArray.push(ei);
-						return current['index'];
-					}
-				});
-			}
-			//end helper function
-			
+			encryptedArray = switchLetters(word, key);
 			encryptedText = encryptedArray.toString();
-//			console.log(encryptedText)
-			//go look up letter to indexarray
-
-
-
-			// word = 'apple'
-			// mappedArray
 			return encryptedText;
 
 		}else if(word!='' && key!=''){
@@ -215,6 +187,30 @@ var Ciphers = function (){
 		}
 
 		return array;
+	}
+
+	/**
+	* Helper function for substituting letters. 
+	* 
+	* @alias module:ciphers~ciphers/shuffle
+	* @param {array: Array of Numbers} Takes in an array of numbers
+	* @returns {array: Array of Numbers} Returns the shuffled array
+	*/
+	function switchLetters(word, key){
+		let letterArray = word.split('');
+		var encryptedArray = [];
+
+		// take the word passed in, split
+		for(let i=0; i<letterArray.length; i++){
+			var singleLetter = letterArray[i];
+			// look up each letter in the mapping.
+			encryptedArray = key.map(function(current, index){
+				if(current['letter'] == singleLetter){
+					return alphabet[current['index']];
+				}
+			});
+		}
+		return encryptedArray;
 	}
 
 	/*

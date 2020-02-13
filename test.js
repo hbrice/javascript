@@ -96,10 +96,14 @@ describe('Substitute Cipher Tests', function(){
 	})
 
 	it('should return an encrypted value for substituteCipher', () => {
-		expect(ciphers.substituteCipher('apple', '')).to.not.be.null;	
+		expect(ciphers.substituteCipher('wand', '')).to.not.be.null;	
 	})
 
 	it('should not be null for substituteCipher', () => {
-		expect(ciphers.substituteCipher('apple', '')).to.not.be.null;
+		expect(ciphers.substituteCipher('wizards', '')).to.not.be.null;
+	})
+
+	it('should not be null for substituteCipher', () => {
+		expect(ciphers.substituteCipher('expelliarmus', '')).to.not.be.null;
 	})
 });
